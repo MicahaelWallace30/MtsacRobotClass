@@ -1,0 +1,19 @@
+Serial Communication:
+
+Serial should be used on :
+Serial1
+Serial2
+Serial3
+
+Supports:
+10 Motors
+4 Joy sticks
+12 buttons
+
+
+Data:
+11 x 8 bits (10 motors & one 8 bit empty)
+5 x 8 bits for joy sticks (To toggle driver control (index 0)))
+2 * 8 bits for buttons each button is 1 bit 
+Technical Note:
+(last four bits is wasted on buttons.)
