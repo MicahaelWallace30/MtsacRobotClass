@@ -5,7 +5,9 @@ Robot test;
 void setup()
 {
 
+
   test.init(&Serial1);
+  gyro.init();
   
 }
 

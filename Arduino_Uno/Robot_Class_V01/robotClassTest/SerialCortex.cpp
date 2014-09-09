@@ -384,8 +384,8 @@ void SerialCortex::updateSerial()
 
   //SEND DATA
   //update all data to be sent
-  //senddata.data[0] = 100//example
-  for(byte index = 0; index < SDATA_SIZE; index++)
+  //senddata.data[1] = 100//example
+  for(byte index = 1; index < SDATA_SIZE; index++)
   {
     senddata.data[index] = motor[index];
   }    

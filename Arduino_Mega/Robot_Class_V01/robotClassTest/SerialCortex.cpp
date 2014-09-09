@@ -169,6 +169,8 @@ void SerialCortex::serialRxDecode( struct _vexmsg  *v  )
     // Expected RDATA_BYTES * RADATA_SIZE
     if( v->header.datalen == (RDATA_BYTES * RDATA_SIZE ))
     {
+	
+	  //first index of the received data is for checking if driver control is active.
       data = (rdata *)&(v->buffer[0]);
       
       if(data->data[0] != 0) driverControl = true;
@@ -179,7 +181,7 @@ void SerialCortex::serialRxDecode( struct _vexmsg  *v  )
         int index;
 
         //Receive data
-        //Example: motor = data->data[0]
+        //Example: controller[index] = data->data[index];
         for(index = 1; index < CONTROLLER_JOYSTICK_QTY + 1; index++)
         {
           controller[index] = data->data[index];                                      
@@ -380,9 +382,9 @@ void SerialCortex::updateSerial()
 
 
   //SEND DATA
-  //update all data to be sent
-  //senddata.data[0] = 100//example
-  for(byte index = 0; index < SDATA_SIZE; index++)
+  //update all data to be sent to the cortex
+  //senddata.data[1] = 100//example
+  for(byte index = 1; index < SDATA_SIZE; index++)
   {
     senddata.data[index] = motor[index];
   }    

@@ -10,6 +10,7 @@ private:
   //driverControl bool is inherited from SerialCortex.h
   //driverControl will be toggled from cortex no need to create new boolean
   //but if you do point to driverControl with new boolean
+  //do not toggle the boolean from the arduino
 
   //Can change name just not order for the three enums below.
   //enum for controller mapping of joy sticks
