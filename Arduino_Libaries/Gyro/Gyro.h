@@ -22,7 +22,7 @@ private:
 
   // orientation/motion vars
   Quaternion q;           // [w, x, y, z]         quaternion container
-  float euler[3];         // [psi, theta, phi]    Euler angle container
+  float eulerX[0];         //
  
 
 public:
@@ -31,7 +31,7 @@ public:
   bool init();
   void update();
   float getXDegrees();	
-
+  void getEulerX(float *data, Quaternion *q);
 
 
 };
@@ -142,7 +142,7 @@ void Gyro::update()
 
     // display Euler angles in degrees
     mpu.dmpGetQuaternion(&q, fifoBuffer);
-    mpu.dmpGetEuler(euler, &q);
+    //mpu.dmpGetEuler(euler, &q);
     //Serial.print("euler\t");
     //Serial.println(euler[0] * 180/M_PI);
 
@@ -151,8 +151,15 @@ void Gyro::update()
 }
 
 float Gyro::getXDegrees()
-{  
-  return (euler[0] * 180/M_PI);
+{
+	getEulerX(eulerX, &q);
+	return (eulerX[0] >= 0 ?  (eulerX[0] * 180/ M_PI) : (2*PI + eulerX[0]) * 360/ (2*M_PI));
+}
+
+
+void Gyro::getEulerX(float *data, Quaternion *q)
+{
+	data[0] = atan2(2*q -> x*q -> y - 2*q -> w*q -> z, 2*q -> w*q -> w + 2*q -> x*q -> x - 1);   // psi
 }
 
 
