@@ -11,6 +11,10 @@ private:
   //driverControl will be toggled from cortex no need to create new boolean
   //but if you do point to driverControl with new boolean
   //do not toggle the boolean from the arduino
+  
+  //variable to hold the autonomous current step.
+  uint8_t autonomousStep;
+  
 
   //Can change name just not order for the three enums below.
   //enum for controller mapping of joy sticks
@@ -54,7 +58,20 @@ public:
   SerialCortex(){};  
   
   //main update which also update serial communication
+  void robotLoop();
+  
+  //to update serial and sensors to be called all the time.
   void update();
+  
+  //update sensors to be called from update
+  void updateSensors();
+  
+  //when driver control is enabled this section should be used to update controls.
+  void updateDriverControl();
+  
+  //to update autonomous code
+  void updateAutonomous();
+  
   
   //initialize robot and serial communication 
   void init(HardwareSerial *serial);

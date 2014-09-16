@@ -386,7 +386,12 @@ void SerialCortex::updateSerial()
   //senddata.data[1] = 100//example
   for(byte index = 1; index < SDATA_SIZE; index++)
   {
-    senddata.data[index] = motor[index];
+    //check if motor is out of byte rabge if so fix
+    if(motor[index] > MOTOR_MAX_SPEED) motor[index] = MOTOR_MAX_SPEED;
+    else if(motor[index] < -MOTOR_MIN_SPEED) motor[index] = MOTOR_MIN_SPEED;
+    
+    //cast motor[index] to byte
+    senddata.data[index] = (int8_t)motor[index];
   }    
 
   // send message

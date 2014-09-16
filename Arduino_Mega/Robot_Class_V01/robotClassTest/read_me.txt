@@ -23,19 +23,19 @@ motor[2] = 100;
 sets motor port 2 on cortex to 100 (2 wire)
 
 
-*Warning 
-motor is one byte
-
-motor[2] = 1000; 
-
-will produce unwanted results stay in byte range (-127 -- +126)
-
+*Warning (9/15/2014) fixed to two bytes from one.
+motor is two bytes (word)
+motor value is now -(2^15) to (2^15) will be cast to 8 bits
 
 
 ------------------------------
 get control input
 ------------------------------
 Robot::update()
+now only loops through to update sensors and serial
+
+
+Robot::robotLoop() is now main loop
 
 The vex cortex has a bool driverControl which when enabled switch driver control on the arduino
 Do not switch the bool on the arduino side it is done by the cortex.

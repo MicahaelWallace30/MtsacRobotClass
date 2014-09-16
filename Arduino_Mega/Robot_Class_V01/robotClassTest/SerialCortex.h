@@ -59,6 +59,9 @@
 //Button QTY needs to divide evenly by 'bits' of RDATA_SIZE
 #define  CONTROLLER_BUTTON_QTY 16 
 #define  SERIAL_BAUD 38400
+#define  MOTOR_MAX_SPEED 126
+#define  MOTOR_MIN_SPEED -127
+
 
 class SerialCortex
 {
@@ -179,7 +182,7 @@ protected:
 	//Do not use motor index must match motor port on cortex.
 	//matchs motor ports 1 - 10 on cortex
 	//index 0 is reserved for special cases that is not implemented as of 9-6-2014
-	int8_t motor[SDATA_SIZE];
+	int16_t motor[SDATA_SIZE];
 	//controller
 	int8_t controller[CONTROLLER_JOYSTICK_QTY + 1];
         bool button[CONTROLLER_BUTTON_QTY];

@@ -36,6 +36,10 @@ will produce unwanted results stay in byte range (-127 -- +126)
 get control input
 ------------------------------
 Robot::update()
+now only loops through to update sensors and serial
+
+
+Robot::robotLoop() is now main loop
 
 The vex cortex has a bool driverControl which when enabled switch driver control on the arduino
 Do not switch the bool on the arduino side it is done by the cortex.
