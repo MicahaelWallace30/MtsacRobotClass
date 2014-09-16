@@ -12,7 +12,7 @@ void setup()
 
 void loop()
 {
-  test.update();
+  test.robotLoop();
 }
 
 

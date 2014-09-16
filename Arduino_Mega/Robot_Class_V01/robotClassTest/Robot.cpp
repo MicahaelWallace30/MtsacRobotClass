@@ -67,13 +67,18 @@ void Robot::updateDriverControl()
 //to update autonomous code 
 void Robot::updateAutonomous()
 {
-    //update robot motors here
+   //update robot motors here
   
   //motor naming can be done in enum from Robot.h
   //motor[] is inherited from SerialCortex.h as protected member
   //example: motor[3] = 33;
   
-  //basic steps of robot should be used in a swtich statement then update autonomousStep by 1 for next step
+  //*******************************************************
+  //Most code below is for examples is psudo to show how you could design the method and warnings of what you need to do.
+  //You can do what ever you want as long as it work this is only a suggestion.
+  //*****************************************************
+  
+  //basic steps of robot could be used in a swtich statement then update autonomousStep by 1 for next step
   //the idea is to have code go in a loop so the robot can still update the serial (motors) and sensors.
   
   //If you want you can define the steps as numbers.
@@ -94,10 +99,25 @@ void Robot::updateAutonomous()
   //  go forward;
   //  update();
   //}  
+  
+  //You could also create  member variable to keep track of what you need
+  //member variable gyro_position_last;
+  //case #n:
+  //   gyro_position_last = 90;// current value
+  //   motors = turn left
+  //   autonomousStep++;
+  //   break;
+  //case #n + 1:
+  //  if(getGyroXPostion() == gyroPostionLast - 180)
+  //  {
+  //    stop motors
+  //  }
 
   
   switch(autonomousStep)
   {
+    default:
+    break;
   }
 
 }
