@@ -23,6 +23,9 @@ private:
   // orientation/motion vars
   Quaternion q;           // [w, x, y, z]         quaternion container
   float eulerX[0];         //
+  
+  float lastPosition;
+  float nextPosition;
  
 
 public:
@@ -32,6 +35,11 @@ public:
   void update();
   float getXDegrees();	
   void getEulerX(float *data, Quaternion *q);
+  void setLastXPosition(float position);
+  float getLastXPosition();
+  float calculateNextXPosition(float change);
+  void setNextXPosition(float position);
+  float getNextXPosition();
 
 
 };
@@ -162,6 +170,47 @@ void Gyro::getEulerX(float *data, Quaternion *q)
 	data[0] = atan2(2*q -> x*q -> y - 2*q -> w*q -> z, 2*q -> w*q -> w + 2*q -> x*q -> x - 1);   // psi
 }
 
+
+void Gyro::setLastXPosition(float position)
+{
+	lastPosition = position;
+}
+
+float Gyro::getLastXPosition()
+{
+	return lastPoistion;
+}
+
+float Gyro::calculateNextXPosition(float change)
+{
+	float delta = getXDegrees(); + change;
+	
+	if(delta > 360)
+	{
+		change = delta - 360;
+	}
+	else if(delta < 0)
+	{
+		change = 360 + (delta);
+	}
+	else
+	{
+		change = delta;
+	}
+	
+	return change;
+	
+}
+
+void Gyro::setNextXPosition(float position)
+{
+	nextPosition = position;
+}
+
+float Gyro::getNextXPosition()
+{
+	return nextPosition;
+}
 
 #endif GYRO_VEX
 
