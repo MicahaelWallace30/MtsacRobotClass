@@ -388,7 +388,7 @@ void SerialCortex::updateSerial()
   {
     //check if motor is out of byte rabge if so fix
     if(motor[index] > MOTOR_MAX_SPEED) motor[index] = MOTOR_MAX_SPEED;
-    else if(motor[index] < -MOTOR_MIN_SPEED) motor[index] = MOTOR_MIN_SPEED;
+    else if(motor[index] < MOTOR_MIN_SPEED) motor[index] = MOTOR_MIN_SPEED;
     
     //cast motor[index] to byte
     senddata.data[index] = (int8_t)motor[index];
