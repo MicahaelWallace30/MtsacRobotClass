@@ -22,12 +22,10 @@ motor[2] = 100;
 
 sets motor port 2 on cortex to 100 (2 wire)
 
-*Warning 
-motor is one byte
 
-motor[2] = 1000; 
-
-will produce unwanted results stay in byte range (-127 -- +126)
+*Warning (9/15/2014) fixed to two bytes from one.
+motor is two bytes (word)
+motor value is now -(2^15) to (2^15) will be cast to 8 bits
 
 
 ------------------------------

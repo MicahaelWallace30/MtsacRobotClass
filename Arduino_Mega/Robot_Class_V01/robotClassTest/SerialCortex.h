@@ -182,7 +182,7 @@ protected:
 	//Do not use motor index must match motor port on cortex.
 	//matchs motor ports 1 - 10 on cortex
 	//index 0 is reserved for special cases that is not implemented as of 9-6-2014
-	int8_t motor[SDATA_SIZE];
+	int16_t motor[SDATA_SIZE];
 	//controller
 	int8_t controller[CONTROLLER_JOYSTICK_QTY + 1];
         bool button[CONTROLLER_BUTTON_QTY];
